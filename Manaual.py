@@ -42,8 +42,8 @@ def InitSetting():
             print '[%s] %s' % (key, SettingData[key])
         op = raw_input('是否使用已保存的设置？[Y/n]')
         if not op in ['n', 'N', 'no', 'No', 'NO']:
-            global TITLE, SCHOOL, AUTHOR, FILE
-            for key in ['TITLE', 'SCHOOL', 'AUTHOR', 'FILE']:
+            global TITLE, SCHOOL, TEAM, FILE
+            for key in ['TITLE', 'SCHOOL', 'TEAM', 'FILE']:
                 globals()[key] = SettingData[key]
         else:
             NewSetting()
@@ -53,13 +53,13 @@ def InitSetting():
 
 
 def NewSetting():
-    global TITLE, SCHOOL, AUTHOR, FILE
+    global TITLE, SCHOOL, TEAM, FILE
     TITLE = raw_input('请输入标题: ')
     SCHOOL = raw_input('请输入学校: ')
-    AUTHOR = raw_input('请输入作者: ')
+    TEAM = raw_input('请输入队名: ')
     FILE = raw_input('请输入文件名: ')
     Data = dict()
-    for key in ['TITLE', 'SCHOOL', 'AUTHOR', 'FILE']:
+    for key in ['TITLE', 'SCHOOL', 'TEAM', 'FILE']:
         Data[key] = globals()[key]
     json.dump(Data, open('setting.dat', 'w'))
 
@@ -125,7 +125,7 @@ def Search(level, pwd, folder=''):
 
 if __name__ == '__main__':
     # 全局设置
-    TITLE, SCHOOL, AUTHOR, FILE = '', '', '', ''
+    TITLE, SCHOOL, TEAM, FILE = '', '', '', ''
     SECTION = ['', '\\clearpage\\section{%s}\n',
                '\\subsection{%s}\n', '\\subsubsection{%s}\n']
 
@@ -137,14 +137,14 @@ if __name__ == '__main__':
     # Output Head File
     TargetFile.write(TexHead)
     TargetFile.write('\\title{%s}\n' % TITLE)
-    TargetFile.write('\\author{%s}\n' % AUTHOR)
-    TargetFile.write('\\pagestyle{fancy}\n\\fancyhf{}\n\\fancyhead[C]{%s by %s}\n' % (TITLE, AUTHOR))
+    TargetFile.write('\\author{%s}\n' % TEAM)
+    TargetFile.write('\\pagestyle{fancy}\n\\fancyhf{}\n\\fancyhead[C]{%s, %s}\n' % (TITLE, TEAM))
     TargetFile.write('\\begin{document}\\small\n')
     TargetFile.write('\\begin{titlepage}\n\\begin{center}\n\\vspace*{0.5cm}\\includegraphics[width=0.75\\textwidth]{logo.jpg} \\\\ [2cm]\n')
     TargetFile.write('\\HRule \\\\ [1cm]\n')
     TargetFile.write('\\textbf{\\Huge{%s}} \\\\ [0.5cm]\n' % TITLE)
     TargetFile.write('\\HRule \\\\ [4cm]\n')
-    TargetFile.write('\\textbf{\\Huge{%s}} \\\\ [1cm]\n\\LARGE{%s}\n' % (SCHOOL, AUTHOR))
+    TargetFile.write('\\textbf{\\Huge{%s}} \\\\ [1cm]\n\\LARGE{%s}\n' % (SCHOOL, TEAM))
     TargetFile.write('\\vfill\n\\Large{\\today}\n\\end{center}\n')
     TargetFile.write('\\clearpage\n\end{titlepage}\n')
     TargetFile.write('\\tableofcontents\\clearpage\n')

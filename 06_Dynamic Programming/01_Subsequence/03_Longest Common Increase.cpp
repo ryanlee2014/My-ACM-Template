@@ -1,7 +1,7 @@
 // 序列下标从1开始
 int LCIS(int a[], int b[], int n, int m)
 {
-    clr(dp, 0);
+    memset(dp, 0, sizeof(dp));
     for (int i = 1; i <= n; i++)
     {
         int ma = 0;

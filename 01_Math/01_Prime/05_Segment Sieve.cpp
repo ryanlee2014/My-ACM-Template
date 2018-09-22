@@ -1,19 +1,17 @@
 // ---
 // 对区间$[a,b)$内的整数执行筛法。\\
 // 函数返回区间内素数个数\\
-// is\_prime[i-a]=true表示i是素数\\
-// $a<b \le 10^{12}, b-a \le 10^6$
+// \texttt{is\_prime[i-a]=true}表示$i$是素数\\
+// $1<a<b \le 10^{12}, b-a \le 10^6$
 // ---
 const int maxn = "Edit";
 bool is_prime_small[maxn], is_prime[maxn];
-int prime[maxn];
+ll prime[maxn];
 int segment_sieve(ll a, ll b)
 {
     int tot = 0;
-    for (ll i = 0; i * i < b; ++i)
-        is_prime_small[i] = true;
-    for (ll i = 0; i < b - a; ++i)
-        is_prime[i] = true;
+    for (ll i = 0; i * i < b; ++i) is_prime_small[i] = true;
+    for (ll i = 0; i < b - a; ++i) is_prime[i] = true;
     for (ll i = 2; i * i < b; ++i)
         if (is_prime_small[i])
         {

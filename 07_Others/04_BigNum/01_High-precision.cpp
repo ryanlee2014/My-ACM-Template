@@ -5,7 +5,7 @@ struct bint
     short int w[100];
     bint(int x = 0)
     {
-        l = x == 0, clr(w, 0);
+        l = x == 0, memset(w, 0);
         while (x) w[l++] = x % 10, x /= 10;
     }
     bool operator<(const bint& x) const

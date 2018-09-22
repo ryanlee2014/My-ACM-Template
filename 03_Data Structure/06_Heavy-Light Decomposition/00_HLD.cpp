@@ -6,7 +6,7 @@ struct HLD
     vector<int> G[maxn];
     void init(int n)
     {
-        this->n = n, clr(son, -1), dfs_clock = 0;
+        this->n = n, memset(son, -1, sizeof(son)), dfs_clock = 0;
         for (int i = 0; i < n; i++) G[i].clear();
     }
     void add_edge(int u, int v) { G[u].pb(v), G[v].pb(u); }

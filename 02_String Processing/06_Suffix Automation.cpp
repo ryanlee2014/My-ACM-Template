@@ -7,7 +7,7 @@ struct SAM
     {
         len[sz] = x;
         link[sz] = -1;
-        clr(ch[sz], -1);
+        memset(ch[sz], -1, sizeof(ch[sz]));
         return sz++;
     }
     void init() { sz = last = 0, rt = newnode(); }
@@ -36,7 +36,7 @@ struct SAM
     int topcnt[maxn], topsam[maxn << 1];
     void sort()
     { // 加入串后拓扑排序
-        clr(topcnt, 0);
+        memset(topcnt, 0, sizeof(topcnt));
         for (int i = 0; i < sz; i++) topcnt[len[i]]++;
         for (int i = 0; i < maxn - 1; i++) topcnt[i + 1] += topcnt[i];
         for (int i = 0; i < sz; i++) topsam[--topcnt[len[i]]] = i;

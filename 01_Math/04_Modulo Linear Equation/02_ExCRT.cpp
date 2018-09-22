@@ -1,5 +1,5 @@
 // ---
-// $X = r_i (mod m_i)$; $m_i$可以不两两互质\\
+// $X \equiv r_i \pmod {m_i}$; $m_i$可以不两两互质\\
 // 引用返回通解$X = re + k * mo$; 函数返回是否有解
 // ---
 bool excrt(ll r[], ll m[], ll n, ll &re, ll &mo)

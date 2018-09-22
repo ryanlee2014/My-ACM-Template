@@ -1,21 +1,14 @@
-// ---
-// 函数返回素因数个数\\
-// 数组以$fact[i][0]^{fact[i][1]}$的形式保存第i个素因数
-// ---
-ll fact[100][2];
-int getFactors(ll x)
+vector<pair<ll, int>> getFactors(ll x)
 {
-    int cnt = 0;
+    vector<pair<ll, int>> fact;
     for (int i = 0; prime[i] <= x / prime[i]; i++)
     {
-        fact[cnt][1] = 0;
         if (x % prime[i] == 0)
         {
-            fact[cnt][0] = prime[i];
-            while (x % prime[i] == 0) fact[cnt][1]++, x /= prime[i];
-            cnt++;
+            fact.emplace_back(prime[i], 0);
+            while (x % prime[i] == 0) fact.back().second++, x /= prime[i];
         }
     }
-    if (x != 1) fact[cnt][0] = x, fact[cnt++][1] = 1;
-    return cnt;
+    if (x != 1) fact.emplace_back(x, 1);
+    return fact;
 }

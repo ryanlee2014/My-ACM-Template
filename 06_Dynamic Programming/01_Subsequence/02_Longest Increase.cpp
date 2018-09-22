@@ -33,7 +33,7 @@ int LIS(int lis[], int n)
 int dp[N];
 int LIS(int a[], int n)
 {
-    clr(dp, 0x3f);
+    memset(dp, 0x3f, sizeof(dp));
     for (int i = 0; i < n; i++) *lower_bound(dp, dp + n, a[i]) = a[i];
     return lower_bound(dp, dp + n, INF) - dp;
 }

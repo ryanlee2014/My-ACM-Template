@@ -4,10 +4,11 @@
 struct query { int L, R, id; };
 void solve(query node[], int m)
 {
-    tmp = 0;
-    clr(num, 0);
-    clr(ans, 0);
-    sort(node, node + m, [](query a, query b) { return a.l / unit < b.l / unit || a.l / unit == b.l / unit && a.r < b.r; });
+    memset(ans, 0, sizeof(ans));
+    sort(node, node + m, [](query a, query b) {
+        return a.l / unit < b.l / unit
+               || a.l / unit == b.l / unit && a.r < b.r;
+    });
     int L = 1, R = 0;
     for (int i = 0; i < m; i++)
     {

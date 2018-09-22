@@ -2,11 +2,10 @@
 // $F(n)=\sum_{d|n}f(d)\Rightarrow f(n)=\sum_{d|n}\mu(d)F(\frac{n}{d})$\\
 // $F(n)=\sum_{n|d}f(d)\Rightarrow f(n)=\sum_{n|d}\mu(\frac{d}{n})F(d)$
 // ---
-ll ans;
 const int maxn = "Edit";
-int n, x, prime[maxn], tot, mu[maxn];
+int prime[maxn], tot, mu[maxn];
 bool check[maxn];
-void calmu()
+void CalMu()
 {
     mu[1] = 1;
     for (int i = 2; i < maxn; i++)
@@ -21,7 +20,8 @@ void calmu()
                 mu[i * prime[j]] = 0;
                 break;
             }
-            else mu[i * prime[j]] = -mu[i];
+            else
+                mu[i * prime[j]] = -mu[i];
         }
     }
 }

@@ -10,6 +10,8 @@ struct LCT
     inline void init(int n)
     { // 初始化点权
         for (int i = 1; i <= n; i++) scanf("%d", val + i);
+        for (int i = 1; i <= n; i++)
+            fa[i] = ch[i][0] = ch[i][1] = rev[i] = 0;
     }
     inline bool isroot(int x) { return ch[fa[x]][0] != x && ch[fa[x]][1] != x; }
     inline bool get(int x) { return ch[fa[x]][1] == x; }
@@ -44,10 +46,19 @@ struct LCT
     {
         for (int y = 0; x; y = x, x = fa[x]) splay(x), ch[x][1] = y, pushup(x);
     }
-    int find(int x) { access(x), splay(x); while (ch[x][0]) x = ch[x][0]; return x; }
+    int find(int x)
+    {
+        access(x), splay(x);
+        while (ch[x][0]) x = ch[x][0];
+        return x;
+    }
     void makeroot(int x) { access(x), splay(x), rev[x] ^= 1; }
     void link(int x, int y) { makeroot(x), fa[x] = y, splay(x); }
     void cut(int x, int y) { makeroot(x), access(y), splay(y), fa[x] = ch[y][0] = 0; }
     void update(int x, int v) { val[x] = v, access(x), splay(x); }
-    int query(int x, int y) { makeroot(y), access(x), splay(x); return sum[x]; }
+    int query(int x, int y)
+    {
+        makeroot(y), access(x), splay(x);
+        return sum[x];
+    }
 };

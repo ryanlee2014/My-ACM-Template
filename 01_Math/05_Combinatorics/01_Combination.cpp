@@ -14,7 +14,7 @@ void CalComb()
 }
 
 // ---
-// $0 \leq m \leq n \leq 10^5$, 模p为素数
+// $0 \leq m \leq n \leq 10^5$, 模$p$为素数
 // ---
 const int maxn = 100010;
 ll f[maxn];

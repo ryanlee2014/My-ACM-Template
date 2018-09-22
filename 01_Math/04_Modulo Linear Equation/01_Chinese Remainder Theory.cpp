@@ -1,5 +1,5 @@
 // ---
-// $X = r_i (mod m_i)$; 要求$m_i$两两互质\\
+// $X \equiv r_i \pmod {m_i}$; 要求$m_i$两两互质\\
 // 引用返回通解$X = re + k * mo$
 // ---
 void crt(ll r[], ll m[], ll n, ll &re, ll &mo)

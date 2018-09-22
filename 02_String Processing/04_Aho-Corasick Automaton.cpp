@@ -3,7 +3,7 @@ struct Trie
 {
     int ch[maxn][26], f[maxn], val[maxn];
     int sz, rt;
-    int newnode() { clr(ch[sz], -1), val[sz] = 0; return sz++; }
+    int newnode() { memset(ch[sz], -1, sizeof(ch[sz])), val[sz] = 0; return sz++; }
     void init() { sz = 0, rt = newnode(); }
     inline int idx(char c) { return c - 'A'; };
     void insert(const char* s)
