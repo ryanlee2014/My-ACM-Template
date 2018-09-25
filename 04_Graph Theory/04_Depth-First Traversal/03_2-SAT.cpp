@@ -26,8 +26,8 @@ struct TwoSAT
     {
         x = (x << 1) + xval;
         y = (y << 1) + yval;
-        G[x ^ 1].pb(y);
-        G[y ^ 1].pb(x);
+        G[x ^ 1].push_back(y);
+        G[y ^ 1].push_back(x);
     }
     bool solve()
     {

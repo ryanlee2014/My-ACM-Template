@@ -1,6 +1,5 @@
 const int maxn = "Edit";
 vector<int> vtree[maxn];
-
 void build(vector<int>& vec)
 {
     sort(vec.begin(), vec.end(), [&](int x, int y) { return dfn[x] < dfn[y]; });

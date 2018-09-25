@@ -6,7 +6,7 @@ inline void init(int n)
 {
     for (int i = 0; i < n; i++) G[i].clear();
 }
-inline void add_edge(int u, int v) { G[u].pb(v); }
+inline void add_edge(int u, int v) { G[u].push_back(v); }
 void dfs(int u)
 {
     pre[u] = lowlink[u] = ++dfs_clock;

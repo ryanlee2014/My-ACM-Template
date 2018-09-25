@@ -8,8 +8,8 @@ struct Trie
     inline int idx(char c) { return c - 'A'; };
     void insert(const char* s)
     {
-        int u = 0, n = strlen(s);
-        for (int i = 0; i < n; i++)
+        int u = 0;
+        for (int i = 0; s[i]; i++)
         {
             int c = idx(s[i]);
             if (ch[u][c] == -1) ch[u][c] = newnode();
@@ -45,9 +45,9 @@ struct Trie
     //返回主串中有多少模式串
     int query(const char* s)
     {
-        int u = rt, n = strlen(s);
+        int u = rt;
         int res = 0;
-        for (int i = 0; i < n; i++)
+        for (int i = 0; s[i]; i++)
         {
             int c = idx(s[i]);
             u = ch[u][c];

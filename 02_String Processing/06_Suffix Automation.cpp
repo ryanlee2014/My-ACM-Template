@@ -2,6 +2,7 @@ const int maxn = "Edit";
 struct SAM
 {
     int len[maxn << 1], link[maxn << 1], ch[maxn << 1][26];
+    int num[maxn << 1]; //每个结点所代表的字符串的出现次数
     int sz, rt, last;
     int newnode(int x = 0)
     {
@@ -11,6 +12,7 @@ struct SAM
         return sz++;
     }
     void init() { sz = last = 0, rt = newnode(); }
+    void reset() { last = 0; }
     void extend(int c)
     {
         int np = newnode(len[last] + 1);
@@ -34,11 +36,18 @@ struct SAM
         last = np;
     }
     int topcnt[maxn], topsam[maxn << 1];
-    void sort()
+    void build(const char* s)
     { // 加入串后拓扑排序
         memset(topcnt, 0, sizeof(topcnt));
         for (int i = 0; i < sz; i++) topcnt[len[i]]++;
         for (int i = 0; i < maxn - 1; i++) topcnt[i + 1] += topcnt[i];
         for (int i = 0; i < sz; i++) topsam[--topcnt[len[i]]] = i;
+        int u = rt;
+        for (int i = 0; s[i]; i++) num[u = ch[u][s[i] - 'a']] = 1;
+        for (int i = sz - 1; ~i; i--)
+        {
+            int u = topsam[i];
+            if (~link[u]) num[link[u]] += num[u];
+        }
     }
 };

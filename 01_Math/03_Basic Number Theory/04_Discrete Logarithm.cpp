@@ -1,6 +1,5 @@
 // ---
-// 求解$a ^ x \equiv b \pmod p$
-// $p$可以不是质数
+// 求解$a ^ x \equiv b \pmod p$，$p$可以不是质数
 // ---
 ll exbsgs(ll a, ll b, ll p)
 {

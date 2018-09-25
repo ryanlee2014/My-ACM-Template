@@ -1,5 +1,5 @@
-const int N = 1 << 14;
-ll res[N], base[N], _c[N], _md[N];
+const int maxn = 1 << 14;
+ll res[maxn], base[maxn], _c[maxn], _md[maxn];
 vector<int> Md;
 void mul(ll* a, ll* b, int k)
 {
@@ -53,14 +53,14 @@ VI BM(VI s)
         {
             VI T = C;
             ll c = mod - d * Pow(b, mod - 2) % mod;
-            while (C.size() < B.size() + m) C.pb(0);
+            while (C.size() < B.size() + m) C.push_back(0);
             for (int i = 0; i < B.size(); i++) C[i + m] = (C[i + m] + c * B[i]) % mod;
             L = n + 1 - L, B = T, b = d, m = 1;
         }
         else
         {
             ll c = mod - d * Pow(b, mod - 2) % mod;
-            while (C.size() < B.size() + m) C.pb(0);
+            while (C.size() < B.size() + m) C.push_back(0);
             for (int i = 0; i < B.size(); i++) C[i + m] = (C[i + m] + c * B[i]) % mod;
             ++m;
         }

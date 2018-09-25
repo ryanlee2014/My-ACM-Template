@@ -1,22 +1,21 @@
-inline ll Mul(ll a, ll b, ll p)
+inline ll Mul(ll a, ll b, ll m)
 {
-    if (p <= 1000000000)
-        return a * b % p;
-    else if (p <= 1000000000000ll)
-        return (((a * (b >> 20) % p) << 20) + (a * (b & ((1 << 20) - 1)))) % p;
+    if (m <= 1000000000)
+        return a * b % m;
+    else if (m <= 1000000000000ll)
+        return (((a * (b >> 20) % m) << 20) + (a * (b & ((1 << 20) - 1)))) % m;
     else
     {
-        ll d = (ll)floor(a * (long double)b / p + 0.5);
-        ll ret = (a * b - d * p) % p;
-        if (ret < 0)
-            ret += p;
+        ll d = (ll)floor(a * (long double)b / m + 0.5);
+        ll ret = (a * b - d * m) % m;
+        if (ret < 0) ret += m;
         return ret;
     }
 }
-ll Pow(ll a, ll n, ll mod)
+ll Pow(ll a, ll n, ll m)
 {
     ll t = 1;
-    for (; n; n >>= 1, a = (a * a % mod))
-        if (n & 1) t = (t * a % mod);
+    for (; n; n >>= 1, a = (a * a % m))
+        if (n & 1) t = (t * a % m);
     return t;
 }

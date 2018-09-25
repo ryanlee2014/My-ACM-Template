@@ -12,7 +12,7 @@ inline void init(int n)
 {
     for (int i = 0; i < n; i++) G[i].clear();
 }
-inline void addedge(int u, int v) { G[u].pb(v); }
+inline void addedge(int u, int v) { G[u].push_back(v); }
 bool bfs()
 {
     queue<int> q;
